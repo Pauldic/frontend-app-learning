@@ -87,6 +87,18 @@ export const MasqueradeWidget: React.FC<Props> = ({ courseId, onError }) => {
   }, []);
 
   const specificLearnerInputText = intl.formatMessage(messages.placeholder);
+
+  const getNewVerbiage = (name: string) => {
+    if (name === "Staff") {
+      return "Member Admin";
+    } else if (name === "Specific Student...") {
+      return "Specific Learner...";
+    } else if (name === "Audit") {
+      return "Auditor";
+    }
+    return name;
+  };
+
   return (
     <div className="flex-grow-1">
       <div className="row">
@@ -99,7 +111,7 @@ export const MasqueradeWidget: React.FC<Props> = ({ courseId, onError }) => {
             {available.map(group => (
               <MasqueradeWidgetOption
                 groupId={group.groupId}
-                groupName={group.name}
+                groupName={getNewVerbiage(group.name)}
                 key={group.name}
                 role={group.role}
                 selected={active}

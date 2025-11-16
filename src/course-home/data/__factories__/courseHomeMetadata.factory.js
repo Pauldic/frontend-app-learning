@@ -95,7 +95,7 @@ Factory.define('courseHomeMetadata')
     Factory.build(
       'tab',
       {
-        title: 'Instructor',
+        title: 'Member Admin',
         priority: 4,
         slug: 'instructor',
         type: 'instructor',
