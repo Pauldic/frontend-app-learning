@@ -14,6 +14,7 @@ import useEnrollmentAlert from '../alerts/enrollment-alert';
 import useLogistrationAlert from '../alerts/logistration-alert';
 
 import ProductTours from '../product-tours/ProductTours';
+import { map } from 'lodash';
 
 const LoadedTabPage = ({
   activeTabSlug,
@@ -80,7 +81,12 @@ const LoadedTabPage = ({
             ...logistrationAlert,
           }}
         />
-        <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} />
+        <CourseTabsNavigation
+          tabs={tabs.map(tab => tab.slug === 'instructor' ? {...tab, title: 'Member Admin'} : tab)}
+          className="mb-3"
+          activeTabSlug={activeTabSlug}
+        />
+        {/* <CourseTabsNavigation tabs={tabs} className="mb-3" activeTabSlug={activeTabSlug} /> */}
         <div id="main-content" className="container-xl">
           {children}
         </div>
